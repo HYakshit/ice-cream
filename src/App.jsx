@@ -1,7 +1,11 @@
 import "./App.css";
-import Card from "./components/common/Card";
+
+import Cart from "./components/common/Cart";
 import Navbar from "./components/Navbar";
-import products from "./data/products";
+// import { ThemeProvider } from "./components/ThemeContext";
+import { Routes, Route } from "react-router-dom";
+import Products from "./components/Products";
+import { ThemeContext, ThemeProvider } from "./components/ThemeContext";
 
 
 function App() {
@@ -14,17 +18,16 @@ function App() {
   return (
     <>
       <Navbar links={links} />
-   
-      {products.map((product) => (
-        <Card
-        product={product}
-        key={product.id}
-          name={product.name}
-          price={product.price}
-          image={product.image}
-          description={product.description}
-          category={product.category}></Card>
-      ))}
+      <ThemeProvider>
+        <Routes>
+          {/* Example routes, replace with your actual pages */}
+          <Route path="/" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
+
+          {/* Add more routes as needed */}
+        </Routes>
+      </ThemeProvider>
+
 
     </>
   );

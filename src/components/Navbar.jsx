@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect, useRef, useState } from 'react';
+import  { useContext} from 'react';
+import { ThemeContext } from "./ThemeContext";
 const Navbar = ({ links }) => {
-
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
 
   const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log(cartItems)
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = cartItems.reduce((subtotal, item) => subtotal + item.price, 0);
+  const subtotal = cartItems.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
   return (
     <div className="navbar bg-teal-400 shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to="/" className="btn btn-ghost text-xl">daisyUI</Link>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
@@ -34,7 +34,7 @@ const Navbar = ({ links }) => {
               }</span>
               <span className="text-info">Subtotal: {subtotal}</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+                <Link to="/cart" className="btn btn-primary btn-block">View cart</Link>
               </div>
             </div>
           </div>
@@ -61,6 +61,9 @@ const Navbar = ({ links }) => {
               </ul>
             </details>
           </li>
+          <button onClick={toggleTheme} className="btn btn-outline">
+            {isDark ? "☀️ Light" : "🌙 Dark"}
+          </button>
         </ul>
       </div>
     </div>
