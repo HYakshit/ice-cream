@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --text: #1f2937;
+  }
+
+  .dark {
+    --bg: #1a202c;
+    --text: #f1f5f9;
+  }
+
+  body {
+    @apply bg-[var(--bg)] text-[var(--text)];
+  }
+}

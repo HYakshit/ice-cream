@@ -62,7 +62,7 @@ const Navbar = ({ links }) => {
             </details>
           </li>
           <button onClick={toggleTheme} className="btn btn-outline">
-            {isDark ? "☀️ Light" : "🌙 Dark"}
+            {!isDark ? "☀️ Light" : "🌙 Dark"}
           </button>
         </ul>
       </div>

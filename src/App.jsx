@@ -17,8 +17,8 @@ function App() {
 
   return (
     <>
-      <Navbar links={links} />
       <ThemeProvider>
+        <Navbar links={links} />
         <Routes>
           {/* Example routes, replace with your actual pages */}
           <Route path="/" element={<Products />} />
