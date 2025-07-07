@@ -1,98 +1,89 @@
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { useContext } from 'react';
+import { useState, useContext } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ThemeContext } from "./ThemeContext";
+import { useSelector } from "react-redux";
+
 const Navbar = ({ links }) => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
-
-
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cartItems.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
+
   return (
-    <div className="navbar dark:bg-teal-950 bg-teal-400 shadow-sm">
-      <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">MINI Fruit cream</Link>
-      </div>
-      <div className="flex-none">
-      
-        <ul className="menu menu-horizontal px-1">
-          {links.map((linkObject, index) => {
-            return (
-              <li key={index}>
-                <Link to={linkObject.path}>{linkObject.label}</Link>
-              </li>
-            );
-          })}
+    <nav className="bg-pink-100 dark:bg-teal-950 shadow-md relative z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <Link to="/" className="text-xl font-bold">
+          MINI Fruit cream
+        </Link>
 
-          <li>
-            <details>
-              <summary>Order online</summary>
-              <ul className="bg-base-100 rounded-t-none p-2">
-                <li>
-                  <Link to={"https://www.swiggy.com/city/amritsar/mini-fruit-cream-north-amritsar-rest1103805"}>Swiggy</Link>
-                </li>
-              </ul>
-            </details>
-          </li>
-          {/* <button onClick={toggleTheme} className="btn btn-outline">
-            {!isDark ? "☀️ Light" : "🌙 Dark"}
-          </button> */}
-        </ul>
-      </div>
-      {/* <div className="flex-none">
-        <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /> </svg>
-              <span className="badge badge-sm indicator-item">{totalQuantity}</span>
-            </div>
-          </div>
-          <div
-            tabIndex={0}
-            className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
-            <div className="card-body">
-              <span className="text-lg font-bold">{cartItems.map((item) => (
-                <div key={item.id}>
-                  {item.name} - Qty: {item.quantity}
-                </div>
-              ))
-              }</span>
-              <span className="text-info">Subtotal: {subtotal}</span>
-              <div className="card-actions">
-                <Link to="/cart" className="btn btn-primary btn-block">View cart</Link>
-              </div>
-            </div>
-          </div>
+        {/* Desktop Links */}
+        <div className="hidden md:flex gap-6 items-center font-semibold">
+          {links.map((link, idx) => (
+            <Link key={idx} to={link.path} className="hover:text-pink-800">
+              {link.label}
+            </Link>
+          ))}
+          <details className="dropdown">
+            <summary className="cursor-pointer">Order online</summary>
+            <ul className="p-2 bg-white shadow-md rounded">
+              <li>
+                <Link
+                  to="https://www.swiggy.com/city/amritsar/mini-fruit-cream-north-amritsar-rest1103805"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Swiggy
+                </Link>
+              </li>
+            </ul>
+          </details>
         </div>
-        <ul className="menu menu-horizontal px-1">
-          {links.map((linkObject, index) => {
-            return (
-              <li key={index}>
-                <Link to={linkObject.path}>{linkObject.label}</Link>
-              </li>
-            );
-          })}
 
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="bg-base-100 rounded-t-none p-2">
-                <li>
-                  <a>Link 1</a>
-                </li>
-                <li>
-                  <a>Link 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <button onClick={toggleTheme} className="btn btn-outline">
-            {!isDark ? "☀️ Light" : "🌙 Dark"}
+        {/* Hamburger Menu */}
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
+            {menuOpen ? (
+              <XMarkIcon className="h-6 w-6 text-rose-800" />
+            ) : (
+              <Bars3Icon className="h-6 w-6 text-rose-800" />
+            )}
           </button>
-        </ul>
-      </div> */}
-    </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-pink-100 shadow-md px-4 py-4 z-40">
+          <ul className="space-y-3 font-medium">
+            {links.map((link, idx) => (
+              <li key={idx}>
+                <Link
+                  to={link.path}
+                  className="block hover:text-pink-800"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+
+              <a
+                href="https://www.swiggy.com/city/amritsar/mini-fruit-cream-north-amritsar-rest1103805"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-pink-800"
+              >
+                Swiggy
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 };
 
