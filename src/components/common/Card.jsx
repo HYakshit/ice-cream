@@ -1,29 +1,37 @@
 import { useDispatch } from 'react-redux';
 import { addToCart } from "../../features/cart/cartSlice";
-const Card = ({ product,
+const images = import.meta.glob('../../assets/Images/*.{jpg,jpeg,png}', {
+    eager: true
+});
+
+const getImageByName = (fileName) => {
+    const match = Object.entries(images).find(([path]) =>
+        path.includes(fileName)
+    );
+    return match ? match[1].default : null;
+};
+
+const Card = ({
     name,
-    price,
     image,
-    description,
-    category }) => {
+    description }) => {
     const dispatch = useDispatch();
     return (
-        <div className="card bg-base-100 w-96 shadow-sm">
+        <div className="card bg-base-100 w-75 shadow-sm">
             <figure>
+                {/*  <div className="card-actions justify-end">
+                    <button onClick={() => dispatch(addToCart(product))} className="btn btn-primary">Buy Now</button>
+                </div> */}
                 <img
-                    src={image}
+                    src={getImageByName(image) || "https://placehold.co/300x270?text=product"}
                     alt={image} />
             </figure>
-            <div className="card-body">
+            <div className="card-body p-2">
                 <h2 className="card-title">{name}</h2>
-                <p>category: {category}</p>
                 <p>{description}</p>
-                <div>price: {price}</div>
-                <div className="card-actions justify-end">
-                    <button onClick={() => dispatch(addToCart(product))} className="btn btn-primary">Buy Now</button>
-                </div>
             </div>
         </div>
     );
 };
 export default Card;
+

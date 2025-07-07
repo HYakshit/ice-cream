@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart } from '../../features/cart/cartSlice';
+import { increase,decrease, removeFromCart } from '../../features/cart/cartSlice';
 import { Link } from 'react-router-dom';
 
 // import {xMark  } from "@heroicons/react/";
@@ -27,6 +27,10 @@ const Cart = () => {
               <p>Qty: {item.quantity}</p>
               <p>Price: ₹{item.price}</p>
               <p>Total: ₹{item.price * item.quantity}</p>
+               <div className='flex gx-5'>
+                <button className="btn btn-primary" onClick={() => { dispatch(increase(item.id)) }}>+1</button>
+                   <button className="btn btn-primary" onClick={() => { dispatch(decrease(item.id)) }}>-1</button>
+              </div>
             </div>
             <div className="right ms-auto">
               <div className="buttons">

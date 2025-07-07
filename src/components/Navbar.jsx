@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import  { useContext} from 'react';
+import { useContext } from 'react';
 import { ThemeContext } from "./ThemeContext";
 const Navbar = ({ links }) => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
@@ -10,11 +10,37 @@ const Navbar = ({ links }) => {
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cartItems.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
   return (
-    <div className="navbar bg-teal-400 shadow-sm">
+    <div className="navbar dark:bg-teal-950 bg-teal-400 shadow-sm">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">daisyUI</Link>
+        <Link to="/" className="btn btn-ghost text-xl">MINI Fruit cream</Link>
       </div>
       <div className="flex-none">
+      
+        <ul className="menu menu-horizontal px-1">
+          {links.map((linkObject, index) => {
+            return (
+              <li key={index}>
+                <Link to={linkObject.path}>{linkObject.label}</Link>
+              </li>
+            );
+          })}
+
+          <li>
+            <details>
+              <summary>Order online</summary>
+              <ul className="bg-base-100 rounded-t-none p-2">
+                <li>
+                  <Link to={"https://www.swiggy.com/city/amritsar/mini-fruit-cream-north-amritsar-rest1103805"}>Swiggy</Link>
+                </li>
+              </ul>
+            </details>
+          </li>
+          {/* <button onClick={toggleTheme} className="btn btn-outline">
+            {!isDark ? "☀️ Light" : "🌙 Dark"}
+          </button> */}
+        </ul>
+      </div>
+      {/* <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -65,7 +91,7 @@ const Navbar = ({ links }) => {
             {!isDark ? "☀️ Light" : "🌙 Dark"}
           </button>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
