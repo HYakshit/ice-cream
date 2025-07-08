@@ -29,12 +29,12 @@ const Home = () => {
                     <p className="mt-4 text-lg text-gray-700">
                         Discover our creamy, dreamy ice creams made with real love and real ingredients.
                     </p>
-                    <div className="mt-6">
- <Link to={"/products"} className=" bg-amber-900 text-white px-6 py-3 rounded-xl hover:bg-amber-800 transition">
-                        View Menu
-                    </Link>
+                    <div className="mt-5">
+                        <Link to={"/Menu"} className=" bg-amber-900 text-white px-6 py-3 rounded-xl hover:bg-amber-800 transition">
+                            View Menu
+                        </Link>
                     </div>
-                   
+
                 </div>
             </section>
 
@@ -50,7 +50,7 @@ const Home = () => {
                             className="bg-pink-50 rounded-lg shadow-sm p-4 text-center hover:scale-105 transition-transform"
                         >
                             <img
-                               src={flavourImages[flavour] ? getImageByName(flavourImages[flavour]) : ""}
+                                src={flavourImages[flavour] ? getImageByName(flavourImages[flavour]) : ""}
                                 alt={flavour}
                                 className="mx-auto mb-4 rounded-full"
                             />

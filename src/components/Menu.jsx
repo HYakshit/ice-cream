@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import products from '../data/products';
-import Card from "../components/common/Card";
+import Card from "./common/Card";
 import { FunnelIcon } from '@heroicons/react/24/solid'; // Icon for FAB
-const Products = () => {
+const Menu = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [showMenu, setShowMenu] = useState(false);
     const categories = ["All", ...new Set(products.map((item) => item.category))];
@@ -14,28 +14,26 @@ const Products = () => {
     return (
         <div className="bg-pink-50 p-4">
             {/* Tabs */}
-           
-                <div className="hidden md:flex  justify-center gap-4 mb-6 flex-wrap my-4">
-                    {categories.map((cat) => (
-                        <button
-                            key={cat}
-                            onClick={() => setActiveCategory(cat)}
-                            className={`px-4 py-2 rounded border ${activeCategory === cat ? "bg-amber-900 text-white" : "bg-white"
-                                }`}
-                        >
-                            {cat}
-                        </button>
-                    ))}
-                </div>
-          
+            <div className="hidden md:flex  justify-center gap-4 mb-6 flex-wrap my-4">
+                {categories.map((cat) => (
+                    <button
+                        key={cat}
+                        onClick={() => setActiveCategory(cat)}
+                        className={`px-4 py-2 rounded border ${activeCategory === cat ? "bg-amber-900 text-white" : "bg-white"
+                            }`}
+                    >
+                        {cat}
+                    </button>
+                ))}
+            </div>
+
 
             <div className="flex  dark:bg-teal-950 mt-3 flex-wrap gap-6 justify-center">
 
 
                 {filteredProducts.map((product) => (
-                    <Card
+                    <Card key={product.name}
                         product={product}
-                        key={product.id}
                         name={product.name}
                         price={product.price}
                         image={product.image}
@@ -53,6 +51,7 @@ const Products = () => {
                     >
                         <FunnelIcon className="w-6 h-6" />
                         Menu
+
                     </button>
 
                     {/* Dropdown menu */}
@@ -64,6 +63,10 @@ const Products = () => {
                                     onClick={() => {
                                         setActiveCategory(cat);
                                         setShowMenu(false);
+                                        window.scrollTo({
+                                            top: 0,
+                                            behavior: "smooth", // for smooth scrolling
+                                        });
                                     }}
                                     className={`block w-full text-left px-4 py-2 hover:bg-pink-100 ${activeCategory === cat ? "bg-amber-900 text-white" : "text-black bg-white"
                                         }`}
@@ -79,4 +82,4 @@ const Products = () => {
     )
 }
 
-export default Products
+export default Menu

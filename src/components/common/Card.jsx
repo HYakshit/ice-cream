@@ -15,6 +15,7 @@ const Card = ({
     name,
     image,
     description }) => {
+      
     const dispatch = useDispatch();
     return (
         <div className="card bg-base-100 w-75 shadow-sm">

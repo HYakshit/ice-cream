@@ -1,4 +1,5 @@
 import React from "react";
+import owner from "../data/owner";
 
 const AboutUs = () => {
   return (
@@ -17,7 +18,7 @@ const AboutUs = () => {
         <div className="md:w-1/2">
           <h2 className="text-3xl font-bold  mb-4">About Us</h2>
           <p className="text-gray-700 text-base leading-relaxed mb-4">
-            Welcome to <span className="font-semibold">MINI Fruit cream</span> – your neighborhood’s
+            Welcome to <span className="font-semibold">{owner.shopname}</span> – your neighborhood’s
             favorite spot for creamy, dreamy delights! We serve handcrafted ice creams, shakes, and fruit creams made with real ingredients and a lot of love.
           </p>
           <p className="text-gray-700 text-base leading-relaxed mb-4">

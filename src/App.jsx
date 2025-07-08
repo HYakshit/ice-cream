@@ -4,7 +4,7 @@ import Cart from "./components/common/Cart";
 import Navbar from "./components/Navbar";
 // import { ThemeProvider } from "./components/ThemeContext";
 import { Routes, Route } from "react-router-dom";
-import Products from "./components/Products";
+import Menu from "./components/Menu";
 import ContactUS from "./components/ContactUS";
 import AboutUs from "./components/AboutUs";
 import { ThemeContext, ThemeProvider } from "./components/ThemeContext";
@@ -26,21 +26,17 @@ useEffect(() => {
 
   return () => clearTimeout(timer); 
 }, []); // ✅
-  const links = [
-    { label: "Products", path: "/products" },
-    { label: "About Us", path: "/about" },
-    { label: "Contact Us", path: "./contactus" },
-  ];
+
 
   return (
     <>
       <ThemeProvider>
         {showModal && <Modal message="This is a demo site. Contact developer to get source code" />}
-        <Navbar links={links} />
+        <Navbar/>
         <Routes >
           {/* Example routes, replace with your actual pages */}
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/Menu" element={<Menu />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/404" element={<Page404 />} />
           <Route path="/contactus" element={<ContactUS />} />
