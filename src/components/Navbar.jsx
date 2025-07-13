@@ -2,36 +2,60 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ThemeContext } from "./ThemeContext";
-import { useSelector } from "react-redux";
-import owner from "../data/owner";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOwner } from "../features/owner/ownerSlice";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const { owner, loading, error } = useSelector((state) => state.owner);
+
+  useEffect(() => {
+    dispatch(fetchOwner());
+  }, [dispatch]);
+
   const { isDark, toggleTheme } = useContext(ThemeContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = cartItems.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
+  const subtotal = cartItems.reduce(
+    (subtotal, item) => subtotal + item.price * item.quantity,
+    0
+  );
   const links = [
     { label: "Menu", path: "/Menu" },
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "./contactus" },
   ];
   return (
-    <nav className="bg-pink-100 dark:bg-teal-950 shadow-md relative z-50">
+    <nav className="bg-pink-100 dark:bg-red-400 shadow-md relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         <Link to="/" className="text-xl font-bold">
           {owner.shopname || "Shop Name"}
         </Link>
+        {/* Dark mode toggle button for desktop */}
+        {/* <button
+          onClick={toggleTheme}
+          className="hidden md:inline-block ml-4 px-2 py-1 rounded bg-amber-900 text-white hover:bg-amber-700 transition"
+          aria-label="Toggle Dark Mode"
+        >
+          {isDark ? "🌙" : "☀️"}
+        </button> */}
         <ul className="hidden md:menu font-bold md:menu-horizontal px-1">
           {links.map((link, idx) => (
-            <li key={idx}> <Link to={link.path} className="hover:text-pink-800">
-              {link.label}
-            </Link></li>
-
+            <li key={idx}>
+              {" "}
+              <Link
+                to={link.path}
+                className="hover:text-white hover:bg-amber-900"
+              >
+                {link.label}
+              </Link>
+            </li>
           ))}
 
-          <li>
+          <li className="bg-pink-100 hover:text-white hover:bg-amber-900">
             <details>
               <summary>Order Online</summary>
               <ul className=" rounded-t-none p-2">
@@ -41,7 +65,7 @@ const Navbar = () => {
                       to={aggregator.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className=""
+                      className="text-amber-900"
                     >
                       {aggregator.name}
                     </Link>
@@ -63,10 +87,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-
-
-
-
 
       {/* Mobile Menu */}
       {

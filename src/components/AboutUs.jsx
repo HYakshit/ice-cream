@@ -1,7 +1,16 @@
-import React from "react";
-import owner from "../data/owner";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOwner } from "../features/owner/ownerSlice";
 
 const AboutUs = () => {
+  const dispatch = useDispatch();
+  const { owner, loading, error } = useSelector((state) => state.owner);
+
+  useEffect(() => {
+    dispatch(fetchOwner());
+  }, [dispatch]);
+
+
   return (
     <section className="bg-pink-50 py-12 px-4" id="about">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">

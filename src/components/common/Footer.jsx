@@ -3,11 +3,19 @@ import {
     PhoneIcon,
     EnvelopeIcon
 } from "@heroicons/react/24/solid";
-import owner from "../../data/owner";
+import { fetchOwner } from "../../features/owner/ownerSlice";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Footer = () => {
+    const dispatch = useDispatch();
+    const { owner, loading, error } = useSelector((state) => state.owner);
+
+    useEffect(() => {
+        dispatch(fetchOwner());
+    }, [dispatch]);
     return (
         <footer className="bg-pink-100 p-2  pt-10 pb-6 px-6v ">
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -32,7 +40,7 @@ const Footer = () => {
                                     to={aggregator.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:underline"
+                                    className=""
                                 >
                                     {aggregator.name}
                                 </Link>
@@ -48,27 +56,32 @@ const Footer = () => {
                         <li className="flex items-center gap-2">
                             <MapPinIcon className="w-5 h-5 " />
 
-                            <a
-                                className="  hover:bg-pink-100"
+                            <Link
+                                className=" "
                                 id="getmethere"
-                                href={owner.gmap}
+                                to={owner.gmap}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 {owner.address || "your address here"}
-                            </a>
+                            </Link>
 
                         </li>
                         <li className="flex items-center gap-2">
                             <PhoneIcon className="w-5 h-5 " />
-                            <Link to={`tel:${owner.mobile}  `} className="text-inherit no-underline  hover:underline">
+                            <Link to={`tel:${owner.mobile}  `} className="text-inherit no-underline ">
                                 {owner.mobile || "your phone number here"}
                             </Link>
 
                         </li>
                         <li className="flex items-center gap-2">
                             <EnvelopeIcon className="w-5 h-5 " />
-                            <span>{owner.email || "your E-mail"}</span>
+                            <Link
+                                to={"mailto:minisfruitcream@gmail.com"}
+                                className="text-inherit no-underline "
+                            >
+                                {owner.email || "your E-mail"}
+                            </Link>
                         </li>
                     </ul>
                     <div className="mt-4 flex gap-4 text-2xl ">

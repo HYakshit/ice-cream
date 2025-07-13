@@ -1,4 +1,3 @@
-import "./App.css";
 
 import Cart from "./components/common/Cart";
 import Navbar from "./components/Navbar";
@@ -26,6 +25,7 @@ useEffect(() => {
 
   return () => clearTimeout(timer); 
 }, []); // ✅
+
 
 
   return (

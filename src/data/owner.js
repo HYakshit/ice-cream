@@ -1,3 +1,15 @@
+import { useEffect, useState } from "react";
+
+const Menu = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost/ice-cream-api/products.php")
+      .then(res => res.json())
+      .then(setProducts);
+  }, []);
+  // ...rest of your logic
+};
+
 const owner =
   //  {
   //   name: "",

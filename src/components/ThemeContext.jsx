@@ -21,6 +21,7 @@ export const ThemeProvider = ({ children }) => {
       localStorage.setItem("theme", "dark");
     } else {
       root.classList.remove("dark");
+        root.classList.add("brown-text");
       localStorage.setItem("theme", "light");
     }
   }, [isDark]);

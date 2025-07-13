@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-#root{
-    /* color: #c6005c; */
+
+@layer utilities {
+  #root {
     color: #973c00;
+  }
 }
