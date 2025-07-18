@@ -27,8 +27,7 @@ const Menu = () => {
                 ))}
             </div>
 
-
-            <div className="flex  dark:bg-teal-950 mt-3 flex-wrap gap-6 justify-center">
+            <div className="flex  mt-3 flex-wrap gap-6 justify-center">
 
 
                 {filteredProducts.map((product) => (
