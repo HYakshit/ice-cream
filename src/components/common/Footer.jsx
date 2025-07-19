@@ -32,7 +32,7 @@ const Footer = () => {
                                     to={aggregator.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:underline"
+                                    className=""
                                 >
                                     {aggregator.name}
                                 </Link>
@@ -61,7 +61,7 @@ const Footer = () => {
                         </li>
                         <li className="flex items-center gap-2">
                             <PhoneIcon className="w-5 h-5 " />
-                            <Link to={`tel:${owner.mobile}  `} className="text-inherit no-underline  hover:underline">
+                            <Link to={`tel:${owner.mobile}  `} className="text-inherit no-underline ">
                                 {owner.mobile || "your phone number here"}
                             </Link>
 
@@ -74,13 +74,13 @@ const Footer = () => {
                     <div className="mt-4 flex gap-4 text-2xl ">
                         <Link to={owner.whatsapp || "#"}
                             target="_blank" rel="noopener noreferrer">
-                            <FaWhatsapp className="hover:text-green-500 transition" />
+                            <FaWhatsapp className=" text-green-500 hover:bg-green-500 hover:text-white rounded-full transition" />
                         </Link>
                         <Link to={owner.facebook || "#"} target="_blank" rel="noopener noreferrer">
-                            <FaFacebook className="hover:text-blue-600 transition" />
+                            <FaFacebook className="text-blue-600 hover:bg-blue-500 hover:text-white rounded-full transition" />
                         </Link>
                         <Link to={owner.instagram || "#"} target="_blank" rel="noopener noreferrer">
-                            <FaInstagram className="hover:text-red-500 transition" />
+                            <FaInstagram className=" text-orange-600 hover:bg-orange-600 hover:text-white rounded-full transition" />
                         </Link>
                     </div>
                 </div>

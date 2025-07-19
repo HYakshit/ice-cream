@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ContactForm } from "./common/ContactForm";
 const images = import.meta.glob('../assets/Images/*.{jpg,jpeg,png}', {
     eager: true
 });
@@ -79,7 +80,12 @@ const Home = () => {
                         <p className="text-gray-600">A neighbourhood favorite trusted by families and friends.</p>
                     </div>
                 </div>
+            </section >
+            {/* Section 4: Contact Form */}
+            <section className="bg-white py-12 px-6 ">
+                <ContactForm fieldMargin={"m-2"} bgColor="bg-pink-50"></ContactForm>
             </section>
+
         </div>
     );
 };
