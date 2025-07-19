@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ThemeContext } from "./ThemeContext";
+// import { ThemeContext } from "./ThemeContext";
 import { useSelector } from "react-redux";
 import owner from "../data/owner";
 
 const Navbar = () => {
-  const { isDark, toggleTheme } = useContext(ThemeContext);
+  // const { isDark, toggleTheme } = useContext(ThemeContext);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const [menuOpen, setMenuOpen] = useState(false);
 

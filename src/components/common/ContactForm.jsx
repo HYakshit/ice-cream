@@ -51,7 +51,7 @@ export const ContactForm = ({ fieldMargin, bgColor }) => {
                                     type="text"
                                     placeholder="Your Name"
                                     {...register('Name')}
-                                    className={`input ${fieldMargin} w-full`}
+                                    className={`input ${fieldMargin} w-full bg-white`}
                                 />
                                 {errors.Name && <p className="text-red-500 text-sm">{errors.Name.message}</p>}
                             </div>
@@ -60,7 +60,7 @@ export const ContactForm = ({ fieldMargin, bgColor }) => {
                                     type="email"
                                     placeholder="Your E-mail"
                                     {...register('email')}
-                                    className={`input ${fieldMargin} w-full`}
+                                    className={`input ${fieldMargin} w-full bg-white`}
                                 />
                                 {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                             </div>
@@ -72,7 +72,7 @@ export const ContactForm = ({ fieldMargin, bgColor }) => {
                                     type="text"
                                     placeholder="Subject"
                                     {...register('Subject')}
-                                    className={`input ${fieldMargin} w-full`}
+                                    className={`input ${fieldMargin} w-full bg-white`}
                                 />
                                 {errors.Subject && <p className="text-red-500 text-sm">{errors.Subject.message}</p>}
                             </div>
@@ -81,7 +81,7 @@ export const ContactForm = ({ fieldMargin, bgColor }) => {
                                     type="number"
                                     placeholder="Your Phone Number"
                                     {...register('Phone_Number')}
-                                    className={`input ${fieldMargin} w-full`}
+                                    className={`input ${fieldMargin} w-full bg-white`}
                                 />
                                 {errors.Phone_Number && <p className="text-red-500 text-sm">{errors.Phone_Number.message}</p>}
                             </div>
@@ -92,7 +92,7 @@ export const ContactForm = ({ fieldMargin, bgColor }) => {
                     <div>
                         <textarea
                             {...register('Message')}
-                            className={`textarea ${fieldMargin} min-h-20 w-full`}
+                            className={`textarea ${fieldMargin} min-h-20 w-full bg-white`}
                             placeholder="Message"
                         ></textarea>
                         {errors.Message && <p className="text-red-500 text-sm">{errors.Message.message}</p>}

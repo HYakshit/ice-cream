@@ -10,17 +10,25 @@ const Modal = ({ message }) => {
                 <p>{message}</p>
                 <ul className="list-none flex flex-col items-center gap-3 text-gray-700">
                     <li>
-                        <a href="tel:  +91 6283250677" className="text-inherit no-underline  hover:underline">
+                        <Link to={"tel:  +91 6283250677"} className="text-inherit no-underline  hover:underline">
                             Call
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="mailto:akshit628325@gmail.com"
+                        <Link
+                            to={"mailto:akshit628325@gmail.com"}
                             className="text-inherit no-underline hover:underline"
                         >
                          E-mail
-                        </a>
+                        </Link>
+                    </li>
+                       <li>
+                        <Link
+                            to={"https://akshitmahajan.netlify.app/"}
+                            className="text-inherit no-underline hover:underline"
+                        >
+                        About developer
+                        </Link>
                     </li>
                 </ul>
             </div>

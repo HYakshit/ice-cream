@@ -18,7 +18,7 @@ const Card = ({
       
     const dispatch = useDispatch();
     return (
-        <div className="card bg-base-100 w-75 shadow-sm">
+        <div className="card w-75 shadow-sm bg-white">
             <figure>
                 {/*  <div className="card-actions justify-end">
                     <button onClick={() => dispatch(addToCart(product))} className="btn btn-primary">Buy Now</button>
