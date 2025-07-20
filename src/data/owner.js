@@ -19,9 +19,9 @@ const owner =
     name: "",
     email: "minisfruitcream@gmail.com",
     mobile: "+91 78887 96675",
-    gmap: "https://maps.app.goo.gl/mBRWcqfkSXENoHWJ8",
+    gmap: "https://www.google.com/maps/dir/?api=1&destination=Mini's+Fruit+Cream,near+railway+station,Kot+Khalsa,Amritsar,Punjab+143002",
     address: "Kot Khalsa near railway station, Amritsar, India, Punjab region",
-    shopname: "MINI Fruit cream",
+    shopname: "MINI's Fruit cream",
     whatsapp:
       "https://api.whatsapp.com/send?phone=917888796675&text=Hi%20there!%20I%20want%20to%20order%20an%20ice%20cream.%20Please%20let%20me%20know%20the%20available%20flavours.",
     instagram: "https://www.instagram.com/minisfruitcream/",

@@ -12,7 +12,7 @@ const Menu = () => {
             ? products
             : products.filter((p) => p.category === activeCategory);
     return (
-        <div className="bg-pink-50 p-4">
+        <div className="bg-rose-50 p-4">
             {/* Tabs */}
             <div className="hidden md:flex  justify-center gap-4 mb-6 flex-wrap my-4">
                 {categories.map((cat) => (
@@ -67,7 +67,7 @@ const Menu = () => {
                                             behavior: "smooth", // for smooth scrolling
                                         });
                                     }}
-                                    className={`block w-full text-left px-4 py-2 hover:bg-pink-100 ${activeCategory === cat ? "bg-amber-900 text-white" : "text-black bg-white"
+                                    className={`block w-full text-left px-4 py-2 hover:bg-rose-50 ${activeCategory === cat ? "bg-amber-900 text-white" : "text-black bg-white"
                                         }`}
                                 >
                                     {cat}

@@ -3,10 +3,11 @@ import owner from '../data/owner';
 import { Link } from 'react-router-dom';
 import { ContactForm } from './common/ContactForm';
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import { LinkComponent } from './common/LinkComponent';
 
 const ContactUS = () => {
     return (
-        <section className="view contact bg-pink-50 p-4" id="contact">
+        <section className="view contact bg-rose-50 p-4" id="contact">
             <div className="row flex flex-col md:flex-row gap-8  px-4">
                 {/* Map Section */}
                 <div className="map-area w-full md:w-1/2">
@@ -21,47 +22,50 @@ const ContactUS = () => {
                             title="Map Location"></iframe>
 
                     </div>
-                    <div className="mt-4 text-center">
-                        <Link
-                            className="btn bg-amber-900 text-white px-4 py-2 rounded hover:bg-amber-700"
-                            id="getmethere"
-                            to={owner.gmap || "#"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Get me there
-                        </Link>
+                    <div className="mt-7 text-center">
+                        <LinkComponent id={"getmethere"} linkUrl={owner.gmap || "#"}>  Get me there</LinkComponent>
+                   
                     </div>
                 </div>
 
                 {/* Contact Section */}
-                <div className="w-full md:w-1/2 text-center color-amber-900 text-amber-900 flex flex-col justify-center items-center">
+                <div className="w-full md:w-1/2 text-center color-amber-900  flex flex-col justify-center items-center">
                     <h3 className="sub-heading text-xl font-semibold mb-4">Contact Us</h3>
-                    <div className="contact mb-3">
-                        <ul className="list-none flex items-center gap-x-4">
-                            <li >
+                    <div className="contact mb-3 text-gray-700">
 
-                                <Link to={"tel:  +91 7888796675"} className="text-inherit no-underline flex justify-center items-center">
-                                    <PhoneIcon className="w-5 h-5 mr-1" />
-                                    {owner.mobile || "your phone number here"}
-                                </Link>
-                            </li>
+                        <ul className="flex flex-col md:flex-row items-center justify-center gap-y-3 md:gap-y-0 md:gap-x-8">
+                            {/* Phone */}
                             <li>
-
-                                <Link
-                                    to={"mailto:minisfruitcream@gmail.com"}
-                                    className="text-inherit no-underline flex justify-center items-center"
+                                <a
+                                    href="tel:+917888796675"
+                                    className="flex items-center justify-center "
                                 >
-                                    <EnvelopeIcon className="w-5 h-5  mr-1" />
-                                    {owner.email || "your E-mail"}
-                                </Link>
+                                    <PhoneIcon className="w-5 h-5 mr-2" />
+                                    <span className="whitespace-nowrap">
+                                        {owner.mobile || "Your Phone Number"}
+                                    </span>
+                                </a>
+                            </li>
+
+                            {/* Email */}
+                            <li>
+                                <a
+                                    href="mailto:minisfruitcream@gmail.com"
+                                    className="flex items-center justify-center "
+                                >
+                                    <EnvelopeIcon className="w-5 h-5 mr-2" />
+                                    <span className="whitespace-nowrap">
+                                        {owner.email || "Your Email"}
+                                    </span>
+                                </a>
                             </li>
                         </ul>
 
-                        <div className="mt-3  text-sm  font-medium px-2">
 
-                            <p className=" flex justify-center items-center">
-                                <MapPinIcon className="w-5 h-5  mr-1" />
+                        <div className="mt-3 md:px-2">
+
+                            <p className=" flex justify-center  items-start md:items-center">
+                                <MapPinIcon className="w-5 h-5  mr-2" />
                                 {owner.address || "your address here"}
                             </p>
                         </div>

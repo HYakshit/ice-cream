@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ContactForm } from "./common/ContactForm";
-const images = import.meta.glob('../assets/Images/*.{jpg,jpeg,png}', {
+import CarouselComponent from "./common/CarouselComponent";
+import { LinkComponent } from "./common/LinkComponent";
+const images = import.meta.glob('../assets/Images/*.{jpg,jpeg,png,webp}', {
     eager: true
 });
 
@@ -11,6 +13,9 @@ const getImageByName = (fileName) => {
     );
     return match ? match[1].default : null;
 };
+const carousalImages = ["pineapple.png", "apple.png", "grapes.png", "banana.png"];
+const carousalImageUrls = carousalImages.map(carousalImage => getImageByName(carousalImage));
+const carousalItems = { "images": carousalImages };
 const Home = () => {
     const flavours = ["Strawberry", "Chocolate", "Mango", "Vanilla"];
     const flavourImages = {
@@ -19,36 +24,42 @@ const Home = () => {
         , "Mango": "Mango Shakes.jpg"
         , "Vanilla": "Vanila Shakes.jpg"
     }
+
     return (
-        <div className="w-full bg-pink-50">
+        <div className="w-full bg-rose-50">
             {/* Section 1: Hero */}
-            <section className=" py-12 px-6 text-center">
-                <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold ">
+            <section
+                className="h-[50vh] md:h-[70vh] relative flex items-center py-12 px-6 text-center bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${getImageByName("hero.webp")})` }}
+            >
+                {/* Overlay with blur */}
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+
+                <div className="relative max-w-4xl mx-auto text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
                         Scoop into Happiness 🍨
                     </h1>
-                    <p className="mt-4 text-lg text-gray-700">
+                    <p className="mt-4 text-lg drop-shadow-md">
                         Discover our creamy, dreamy ice creams made with real love and real ingredients.
                     </p>
                     <div className="mt-5">
-                        <Link to={"/Menu"} className=" bg-amber-900 text-white px-6 py-3 rounded-xl hover:bg-amber-800 transition">
-                            View Menu
-                        </Link>
+                        <LinkComponent linkUrl="/Menu">View Menu</LinkComponent>
                     </div>
-
                 </div>
             </section>
 
             {/* Section 2: Flavor Highlights */}
             <section className="bg-white py-12 px-6">
                 <h2 className="text-3xl font-semibold text-center mb-8">
-                    Popular Flavours
+                    Delivering the Goodness of Fruits
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                    {flavours.map((flavour, i) => (
+                <div>
+                    <CarouselComponent carousalItems={carousalItems} />
+                    {/* <CarouselComponent images={carousalImages.map(carousalImage => getImageByName(carousalImage))} /> */}
+                    {/* {flavours.map((flavour, i) => (
                         <div
                             key={i}
-                            className="bg-pink-50 rounded-lg shadow-sm p-4 text-center hover:scale-105 transition-transform"
+                            className="bg-rose-50 rounded-lg shadow-sm p-4 text-center hover:scale-105 transition-transform"
                         >
                             <img
                                 src={flavourImages[flavour] ? getImageByName(flavourImages[flavour]) : ""}
@@ -57,12 +68,12 @@ const Home = () => {
                             />
                             <h3 className="text-xl font-medium ">{flavour}</h3>
                         </div>
-                    ))}
+                    ))} */}
                 </div>
             </section>
 
             {/* Section 3: Why Choose Us */}
-            <section className="bg-pink-50 py-12 px-6">
+            <section className="bg-rose-50 py-12 px-6">
                 <h2 className="text-3xl font-semibold text-center  mb-8">
                     Why Choose Us?
                 </h2>
@@ -83,7 +94,7 @@ const Home = () => {
             </section >
             {/* Section 4: Contact Form */}
             <section className="bg-white py-12 px-6 ">
-                <ContactForm fieldMargin={"m-2"} bgColor="bg-pink-50"></ContactForm>
+                <ContactForm fieldMargin={"m-2"} bgColor="bg-rose-50"></ContactForm>
             </section>
 
         </div>

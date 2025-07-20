@@ -1,14 +1,25 @@
 import React from "react";
 import owner from "../data/owner";
+const images = import.meta.glob('../assets/Images/*.{jpg,jpeg,png}', {
+  eager: true
+});
 
+const getImageByName = (fileName) => {
+  const match = Object.entries(images).find(([path]) =>
+    path.includes(fileName)
+  );
+  return match ? match[1].default : null;
+};
+const aboutImages = ["eating.jpg"];
 const AboutUs = () => {
   return (
-    <section className="bg-pink-50 py-12 px-4" id="about">
+    <section className="bg-rose-50 py-12 px-4" id="about">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
         {/* Image */}
         <div className="md:w-1/2">
           <img
-            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587"
+            src=
+            {getImageByName("eating.jpg")}
             alt="About Us Ice Cream"
             className="rounded-3xl shadow-md w-full h-auto object-cover"
           />

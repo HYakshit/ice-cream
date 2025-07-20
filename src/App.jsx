@@ -12,6 +12,10 @@ import Footer from "./components/common/Footer";
 import Home from "./components/Home";
 import Modal from "./components/common/Modal";
 import { useEffect, useState } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 
 function App() {
   const [showModal, setShowModal] = useState(true);

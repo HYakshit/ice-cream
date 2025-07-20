@@ -18,30 +18,30 @@ const Navbar = () => {
     { label: "Contact Us", path: "./contactus" },
   ];
   return (
-    <nav className="bg-pink-100 shadow-md relative z-50">
+    <nav className="bg-amber-900 shadow-md relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        <Link to="/" className="text-xl font-bold">
+        <Link to="/" className="text-xl text-white font-bold">
           {owner.shopname || "Shop Name"}
         </Link>
         <ul className="hidden md:menu font-bold md:menu-horizontal px-1">
           {links.map((link, idx) => (
-            <li key={idx}> <Link to={link.path} className="hover:text-pink-800">
+            <li key={idx}> <Link to={link.path} className="text-white hover:bg-text-white/50">
               {link.label}
             </Link></li>
 
           ))}
 
-          <li>
+          <li className="text-white hover:bg-text-white/50">
             <details>
               <summary>Order Online</summary>
               <ul className=" rounded-t-none p-2">
                 {owner.agregators && owner.agregators.length > 0 && owner.agregators.map((aggregator) => (
-                  <li key={aggregator.name}>
+                  <li key={aggregator.name} className="text-amber-900 "  >
                     <Link
                       to={aggregator.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className=""
+
                     >
                       {aggregator.name}
                     </Link>
@@ -56,19 +56,15 @@ const Navbar = () => {
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle Menu">
             {menuOpen ? (
-              <XMarkIcon className="h-6 w-6 text-rose-800" />
+              <XMarkIcon className="h-6 w-6 text-white" />
             ) : (
-              <Bars3Icon className="h-6 w-6 text-rose-800" />
+              <Bars3Icon className="h-6 w-6 text-white" />
             )}
           </button>
         </div>
       </div>
 
-
-
-
-
-      {/* Mobile Menu */}
+  {/* Mobile Menu */}
       {
         menuOpen && (
           <div className="md:hidden font-semibold absolute top-16 left-0 w-full bg-pink-100 shadow-md px-4 py-4 z-40">

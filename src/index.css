@@ -1,7 +1,29 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@layer components {
+#root {
+  /* color: #c6005c; */
+  color: #973c00;
+}
+.link-custom {
+  font-weight: 600;
+  position: relative;
+  color: white;
+  padding: 3px;
+}
 
-#root{
-    /* color: #c6005c; */
-    color: #973c00;
+.link-custom::after {
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  top: 110%;
+  transition: all 0.4s;
+}
+
+.link-custom:hover::after {
+  width: 100%;
+}
 }

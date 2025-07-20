@@ -12,25 +12,28 @@ const getImageByName = (fileName) => {
 };
 
 const Card = ({
+    imgHeight="full",
     name,
+    noShadow = false,
     image,
     description }) => {
-      
+
     const dispatch = useDispatch();
     return (
-        <div className="card w-75 shadow-sm bg-white">
-            <figure>
+        <div className={`card w-75 ${noShadow ? null : "shadow-sm"} bg-white flex items-center justify-center `}>
+            {(image) && <figure>
                 {/*  <div className="card-actions justify-end">
                     <button onClick={() => dispatch(addToCart(product))} className="btn btn-primary">Buy Now</button>
                 </div> */}
                 <img
+                className={`object-contain h-${imgHeight}`}
                     src={getImageByName(image) || "https://placehold.co/300x270?text=product"}
                     alt={image} />
-            </figure>
-            <div className="card-body p-2">
+            </figure>}
+            {(name) && <div className="card-body p-2">
                 <h2 className="card-title">{name}</h2>
-                <p>{description}</p>
-            </div>
+                <p className='text-gray-700'>{description}</p>
+            </div>}
         </div>
     );
 };
