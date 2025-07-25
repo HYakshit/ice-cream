@@ -37,7 +37,7 @@ const ContactUS = () => {
 
                         <ul className="flex flex-col md:flex-row items-center justify-center gap-y-3 md:gap-y-0 md:gap-x-8">
                             {/* Phone */}
-                            <li className="flex items-center gap-2">
+                            <li className="flex items-center gap-0.5 md:gap-2">
                                 <PhoneIcon className="w-5 h-5 " />
                                 {owner.mobile.map((mobile, index) => (
                                     <><a href={`tel:${mobile}  `} className="no-underline text-inherit link-custom ">
