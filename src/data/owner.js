@@ -18,7 +18,7 @@ const owner =
   {
     name: "",
     email: "minisfruitcream@gmail.com",
-    mobile: "+91 78887 96675",
+    mobile: ["+91 78887 96675","+91 9781715522"],
     gmap: "https://www.google.com/maps/dir/?api=1&destination=Mini's+Fruit+Cream,near+railway+station,Kot+Khalsa,Amritsar,Punjab+143002",
     address: "Kot Khalsa near railway station, Amritsar, India, Punjab region",
     shopname: "MINI's Fruit cream",

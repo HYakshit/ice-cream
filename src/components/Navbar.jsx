@@ -18,7 +18,7 @@ const Navbar = () => {
     { label: "Contact Us", path: "./contactus" },
   ];
   return (
-    <nav className="bg-amber-900 shadow-md relative z-50">
+    <nav className="bg-amber-900 shadow-md  z-50 fixed top-0 left-0 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         <Link to="/" className="text-xl text-white font-bold">
           {owner.shopname || "Shop Name"}

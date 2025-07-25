@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ContactForm } from "./common/ContactForm";
 import CarouselComponent from "./common/CarouselComponent";
 import { LinkComponent } from "./common/LinkComponent";
+import owner from "../data/owner";
+import { Heading, SubHeading } from "./common/Typography";
 const images = import.meta.glob('../assets/Images/*.{jpg,jpeg,png,webp}', {
     eager: true
 });
@@ -29,17 +31,20 @@ const Home = () => {
         <div className="w-full bg-rose-50">
             {/* Section 1: Hero */}
             <section
-                className="h-[50vh] md:h-[70vh] relative flex items-center py-12 px-6 text-center bg-cover bg-center bg-no-repeat"
+                className="h-[57vh] md:h-[75vh] relative flex items-center py-12 px-6 text-center bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${getImageByName("hero.webp")})` }}
             >
                 {/* Overlay with blur */}
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
 
                 <div className="relative max-w-4xl mx-auto text-white">
-                    <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
+                  <Heading size="1xl" >  
+                        Welcome to {owner.shopname}
+                   </Heading>
+                   <SubHeading > 
                         Scoop into Happiness 🍨
-                    </h1>
-                    <p className="mt-4 text-lg drop-shadow-md">
+                   </SubHeading>
+                    <p className="mt-4 md:text-2xl drop-shadow-md">
                         Discover our creamy, dreamy ice creams made with real love and real ingredients.
                     </p>
                     <div className="mt-5">
@@ -50,9 +55,9 @@ const Home = () => {
 
             {/* Section 2: Flavor Highlights */}
             <section className="bg-white py-12 px-6">
-                <h2 className="text-3xl font-semibold text-center mb-8">
+                <SubHeading >
                     Delivering the Goodness of Fruits
-                </h2>
+                </SubHeading>
                 <div>
                     <CarouselComponent carousalItems={carousalItems} />
                     {/* <CarouselComponent images={carousalImages.map(carousalImage => getImageByName(carousalImage))} /> */}
@@ -74,9 +79,9 @@ const Home = () => {
 
             {/* Section 3: Why Choose Us */}
             <section className="bg-rose-50 py-12 px-6">
-                <h2 className="text-3xl font-semibold text-center  mb-8">
+              <SubHeading >  
                     Why Choose Us?
-                </h2>
+                </SubHeading>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto text-center">
                     <div className="p-6 bg-white shadow-md rounded-lg">
                         <h3 className="text-xl font-bold  mb-2">Fresh Ingredients</h3>
@@ -94,6 +99,7 @@ const Home = () => {
             </section >
             {/* Section 4: Contact Form */}
             <section className="bg-white py-12 px-6 ">
+               <SubHeading > Get in Touch</SubHeading>
                 <ContactForm fieldMargin={"m-2"} bgColor="bg-rose-50"></ContactForm>
             </section>
 

@@ -42,7 +42,7 @@ export const ContactForm = ({ fieldMargin, bgColor }) => {
     return (
 
         <FormProvider {...methods}>
-            <div className={`form ${bgColor} p-4 m-2 rounded-2xl w-full max-w-3xl mx-auto`}>
+            <div className={`form ${bgColor} p-4 m-2 rounded-2xl w-full  mx-auto`}>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className="w-full flex  flex-col items-center"

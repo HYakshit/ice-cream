@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import products from '../data/products';
 import Card from "./common/Card";
 import { FunnelIcon } from '@heroicons/react/24/solid'; // Icon for FAB
+import { Heading } from './common/Typography';
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [showMenu, setShowMenu] = useState(false);
@@ -13,6 +14,7 @@ const Menu = () => {
             : products.filter((p) => p.category === activeCategory);
     return (
         <div className="bg-rose-50 p-4">
+            <Heading>Choose from our wide range of items</Heading>
             {/* Tabs */}
             <div className="hidden md:flex  justify-center gap-4 mb-6 flex-wrap my-4">
                 {categories.map((cat) => (

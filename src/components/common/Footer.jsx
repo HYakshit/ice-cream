@@ -7,6 +7,7 @@ import owner from "../../data/owner";
 import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { InlineLink } from "./InlineLink";
+import React from "react";
 
 const Footer = () => {
     return (
@@ -17,7 +18,7 @@ const Footer = () => {
                 <div>
                     <h1 className="text-2xl  font-bold  mb-2">{owner.shopname || "Shop name"}</h1>
                     <p className="text-sm ">
-                        Scooping smiles since 2020. Come chill with us!
+                        Scooping smiles since 2024. Come chill with us!
                     </p>
                 </div>
 
@@ -62,15 +63,20 @@ const Footer = () => {
 
                         </li>
                         <li className="flex items-center gap-2">
-                            <PhoneIcon className="w-5 h-5 " />
-                            <Link to={`tel:${owner.mobile}  `} className="text-inherit no-underline link-custom">
-                                {owner.mobile || "your phone number here"}
-                            </Link>
-
+                            <PhoneIcon className="w-5 h-5" />
+                            {owner.mobile.map((mobile, index) => (
+                                <React.Fragment key={index}>
+                                    <a href={`tel:${mobile}`} className="text-inherit no-underline link-custom">
+                                        {mobile || "your phone number here"}
+                                    </a>
+                                    {index !== owner.mobile.length - 1 && <span>OR</span>}
+                                </React.Fragment>
+                            ))}
                         </li>
+
                         <li className="flex items-center gap-2 ">
                             <EnvelopeIcon className="w-5 h-5 mr-2" />
-                            <InlineLink LinkUrl={"mailto:minisfruitcream@gmail.com"}>
+                            <InlineLink LinkUrl={`mailto:minisfruitcream@gmail.com`}>
 
                                 <span className="whitespace-nowrap">
                                     {owner.email || "Your Email"}
@@ -78,16 +84,16 @@ const Footer = () => {
                         </li>
                     </ul>
                     <div className="mt-4 flex gap-4 text-4xl ">
-                        <Link to={owner.whatsapp || "#"}
+                        <a href={owner.whatsapp || "#"}
                             target="_blank" rel="noopener noreferrer">
                             <FaWhatsapp className=" text-green-500 bg-white p-1 hover:bg-green-500 hover:text-white rounded-full transition" />
-                        </Link>
-                        <Link to={owner.facebook || "#"} target="_blank" rel="noopener noreferrer">
+                        </a>
+                        <a href={owner.facebook || "#"} target="_blank" rel="noopener noreferrer">
                             <FaFacebook className="text-blue-600 bg-white p-1 hover:bg-blue-600 hover:text-white rounded-full transition" />
-                        </Link>
-                        <Link to={owner.instagram || "#"} target="_blank" rel="noopener noreferrer">
+                        </a>
+                        <a href={owner.instagram || "#"} target="_blank" rel="noopener noreferrer">
                             <FaInstagram className=" text-red-600 bg-white p-1 hover:bg-red-600 hover:text-white rounded-full transition" />
-                        </Link>
+                        </a>
                     </div>
                 </div>
 

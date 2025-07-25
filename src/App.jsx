@@ -20,22 +20,23 @@ import "slick-carousel/slick/slick-theme.css";
 function App() {
   const [showModal, setShowModal] = useState(true);
 
-useEffect(() => {
-  setShowModal(true); 
+  useEffect(() => {
+    setShowModal(true);
 
-  const timer = setTimeout(() => {
-    setShowModal(false);
-  }, 2000); 
+    const timer = setTimeout(() => {
+      setShowModal(false);
+    }, 2000);
 
-  return () => clearTimeout(timer); 
-}, []); // ✅
+    return () => clearTimeout(timer);
+  }, []); // ✅
 
 
   return (
     <>
-    
-        {showModal && <Modal message="This is a demo site. Contact developer to get source code" />}
-        <Navbar/>
+
+      {showModal && <Modal message="This is a demo site. Contact developer to get source code" />}
+      <Navbar />
+      <main className="pt-16 ">
         <Routes >
           {/* Example routes, replace with your actual pages */}
           <Route path="/" element={<Home />} />
@@ -47,8 +48,9 @@ useEffect(() => {
 
           {/* Add more routes as needed */}
         </Routes>
-        <Footer></Footer>
-     
+      </main>
+      <Footer></Footer>
+
 
 
     </>

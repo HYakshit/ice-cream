@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { ContactForm } from './common/ContactForm';
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
 import { LinkComponent } from './common/LinkComponent';
+import { InlineLink } from './common/InlineLink';
+import { SubHeading } from './common/Typography';
 
 const ContactUS = () => {
     return (
@@ -11,7 +13,7 @@ const ContactUS = () => {
             <div className="row flex flex-col md:flex-row gap-8  px-4">
                 {/* Map Section */}
                 <div className="map-area w-full md:w-1/2">
-                    <h2 className="p-3 text-center font-semibold" >Locate Us</h2>
+                    <SubHeading  >Locate Us</SubHeading>
 
                     <div className="map-container relative overflow-hidden pb-[56.25%] h-0">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.3694791011653!2d74.82583439999999!3d31.623732600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919658508c8273b%3A0x9c7cba8c04482ffb!2sMini&#39;s%20Fruit%20Cream!5e0!3m2!1sen!2sin!4v1751974378011!5m2!1sen!2sin"
@@ -24,34 +26,32 @@ const ContactUS = () => {
                     </div>
                     <div className="mt-7 text-center">
                         <LinkComponent id={"getmethere"} linkUrl={owner.gmap || "#"}>  Get me there</LinkComponent>
-                   
+
                     </div>
                 </div>
 
                 {/* Contact Section */}
                 <div className="w-full md:w-1/2 text-center color-amber-900  flex flex-col justify-center items-center">
-                    <h3 className="sub-heading text-xl font-semibold mb-4">Contact Us</h3>
-                    <div className="contact mb-3 text-gray-700">
+                    <SubHeading >Contact Us</SubHeading>
+                    <div className="contact  text-gray-700">
 
                         <ul className="flex flex-col md:flex-row items-center justify-center gap-y-3 md:gap-y-0 md:gap-x-8">
                             {/* Phone */}
-                            <li>
-                                <a
-                                    href="tel:+917888796675"
-                                    className="flex items-center justify-center "
-                                >
-                                    <PhoneIcon className="w-5 h-5 mr-2" />
-                                    <span className="whitespace-nowrap">
-                                        {owner.mobile || "Your Phone Number"}
-                                    </span>
-                                </a>
+                            <li className="flex items-center gap-2">
+                                <PhoneIcon className="w-5 h-5 " />
+                                {owner.mobile.map((mobile, index) => (
+                                    <><a href={`tel:${mobile}  `} className="no-underline text-inherit link-custom ">
+                                        {mobile || "your phone number here"}
+                                    </a>{(index !== owner.mobile.length - 1) && <span>OR</span>}</>
+                                ))}
+
                             </li>
 
                             {/* Email */}
                             <li>
                                 <a
                                     href="mailto:minisfruitcream@gmail.com"
-                                    className="flex items-center justify-center "
+                                    className="flex items-center justify-center text-inherit link-custom"
                                 >
                                     <EnvelopeIcon className="w-5 h-5 mr-2" />
                                     <span className="whitespace-nowrap">
@@ -70,7 +70,10 @@ const ContactUS = () => {
                             </p>
                         </div>
                     </div>
-                    <ContactForm fieldMargin={"m-2"} bgColor="bg-amber-50"></ContactForm>
+                    <div className="mt-3 w-full">
+                        <SubHeading  >Get in touch</SubHeading>
+                        <ContactForm fieldMargin={"m-2"} bgColor="bg-amber-50"></ContactForm>
+                    </div>
 
                 </div>
             </div>
